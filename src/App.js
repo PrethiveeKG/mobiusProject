@@ -1,15 +1,27 @@
-import logo from "./logo.svg";
-import "./App.css";
+// import logo from "./logo.svg";
+// import "./App.css";
+import React from "react";
+import SidebarWrapper from "./layout/SidebarWrapper";
+import Dashboard from "./pages/Dashboard";
+import Charts from "./pages/Charts";
+import Forecast from "./pages/Forecast";
+import Revenue from "./pages/Revenue";
+import Budgeting from "./pages/Budgeting";
+import Expenses from "./pages/Expenses";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Tick marks project for Mobius Knowledge Services</h1>
-        <h2>Happy new year 2024</h2>
-      </header>
+    <div>
+      <SidebarWrapper />
+      <Dashboard />
+      <Charts />
+      <Forecast />
+      <Revenue />
+      <Budgeting />
+      <Expenses />
+      App
     </div>
   );
-}
+};
 
 export default App;
