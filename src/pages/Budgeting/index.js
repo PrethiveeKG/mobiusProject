@@ -1,7 +1,12 @@
 import React from "react";
+import CommingSoon from "../../components/CommingSoon";
 
 const Budgeting = () => {
-  return <div>Budgeting</div>;
+  return (
+    <>
+      <CommingSoon />
+    </>
+  );
 };
 
 export default Budgeting;

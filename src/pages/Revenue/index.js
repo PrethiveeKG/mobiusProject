@@ -1,7 +1,12 @@
 import React from "react";
+import CommingSoon from "../../components/CommingSoon";
 
 const Revenue = () => {
-  return <div>Revenue</div>;
+  return (
+    <>
+      <CommingSoon />
+    </>
+  );
 };
 
 export default Revenue;

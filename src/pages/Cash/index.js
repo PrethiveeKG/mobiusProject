@@ -1,11 +1,12 @@
 import React from "react";
 import CommingSoon from "../../components/CommingSoon";
 
-const Expenses = () => {
+const Cash = () => {
   return (
     <>
       <CommingSoon />
     </>
-  );};
+  );
+};
 
-export default Expenses;
+export default Cash;

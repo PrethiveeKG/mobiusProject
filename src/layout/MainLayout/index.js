@@ -7,6 +7,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  styled,
   useMediaQuery,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -17,20 +18,21 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 import Header from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
-const SidebarWrapper = ({ children }) => {
+const MainLayout = ({ children }) => {
   const theme = useTheme();
-  const isSmallDevice = useMediaQuery(theme.breakpoints.down("1048"));
-  // const isSmallDevice = useMediaQuery.breakpoints.down("1048");
+  const navigate = useNavigate();
 
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("1048"));
   const [openDrawer, setOpenDrawer] = useState(true);
+  const [openFPA, setOpenFPA] = useState(true);
+  const [selectedMenu, setSelectedMenu] = useState("finHealth");
+
   const drawerWidth = openDrawer ? 260 : 0;
   const handleDrawerToggle = () => {
     setOpenDrawer((prev) => !prev);
   };
-
-  const [openFPA, setOpenFPA] = useState(true);
-  const [selectedMenu, setSelectedMenu] = useState("finHealth");
 
   const handleFPAToggle = () => {
     setOpenFPA((prev) => !prev);
@@ -38,11 +40,18 @@ const SidebarWrapper = ({ children }) => {
 
   const handleMenuClick = (menuName) => {
     setSelectedMenu(menuName);
+    navigate(menuName);
     isSmallDevice && handleDrawerToggle();
   };
 
+  const Main = styled("main")(({ theme }) => ({
+    marginBlockStart: theme.spacing(8),
+    padding: theme.spacing(2),
+    flexGrow: 1,
+  }));
+
   return (
-    <div style={{ display: "flex" }}>
+    <Box sx={{ display: isSmallDevice ? "block" : "flex" }}>
       {/* Header */}
       <Header
         drawerWidth={drawerWidth}
@@ -84,7 +93,7 @@ const SidebarWrapper = ({ children }) => {
                 color: theme.palette.tickTie.light,
               },
               "& .MuiListItemIcon-root": {
-                minWidth: "42px",
+                minWidth: theme.spacing(5),
               },
             }}
           >
@@ -180,59 +189,9 @@ const SidebarWrapper = ({ children }) => {
           </List>
         </Drawer>
       </Box>
-      <Box
-        style={{
-          marginBlockStart: "88px",
-        }}
-      >
-        <main style={{ flexGrow: 1, padding: theme.spacing(2) }}>
-          {children}
-          <br />
-          Text buttons are typically used for less-pronounced actions, including
-          those located: in dialogs, in cards. In cards, text buttons help
-          maintain an emphasis on card content.Text buttons are typically used
-          for less-pronounced actions, including those located: in dialogs, in
-          cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content. Text buttons are typically used for less-pronounced actions,
-          including those located: in dialogs, in cards. In cards, text buttons
-          help maintain an emphasis on card content.Text buttons are typically
-          used for less-pronounced actions, including those located: in dialogs,
-          in cards. In cards, text buttons help maintain an emphasis on card
-          content.
-        </main>
-      </Box>
-    </div>
+      <Main>{children}</Main>
+    </Box>
   );
 };
 
-export default SidebarWrapper;
+export default MainLayout;

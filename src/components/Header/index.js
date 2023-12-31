@@ -37,7 +37,7 @@ const Header = ({
         width: isSmallDevice ? `100vw` : `calc(100vw - ${drawerWidth}px)`,
         bgcolor: theme.palette.tickTie.light,
       }}
-      elevation={0}
+      elevation={1}
     >
       <Toolbar>
         <IconButton onClick={handleDrawerToggle}>
