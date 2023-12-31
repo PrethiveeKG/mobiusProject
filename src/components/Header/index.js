@@ -43,7 +43,18 @@ const Header = ({
         <IconButton onClick={handleDrawerToggle}>
           {openDrawer ? <MenuOpen /> : <MenuIcon />}
         </IconButton>
-        <Grid container xs={12} spacing={1}>
+        <Grid
+          container
+          xs={12}
+          spacing={1}
+          sx={{
+            "& .MuiSvgIcon-root": {
+              [theme.breakpoints.up("xs")]: {
+                fontSize: 20,
+              },
+            },
+          }}
+        >
           <Grid item xs={3} sm={1} md={5}>
             {isTablet ? (
               <IconButton onClick={() => {}}>

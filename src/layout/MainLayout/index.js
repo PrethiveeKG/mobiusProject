@@ -46,8 +46,14 @@ const MainLayout = ({ children }) => {
 
   const Main = styled("main")(({ theme }) => ({
     marginBlockStart: theme.spacing(8),
-    padding: theme.spacing(2),
     flexGrow: 1,
+    [theme.breakpoints.up('xs')]: {
+      padding: theme.spacing(1),
+		},
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(2),
+		},
+
   }));
 
   return (
@@ -94,6 +100,9 @@ const MainLayout = ({ children }) => {
               },
               "& .MuiListItemIcon-root": {
                 minWidth: theme.spacing(5),
+              },
+              "& .MuiListItemText-primary": {
+                fontSize: "0.9rem",
               },
             }}
           >

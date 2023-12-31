@@ -11,6 +11,9 @@ const theme = createTheme({
       lightText: "#ffffff",
       darkText: "#000000",
       mainText: "#292929",
+      success: "#00CB34",
+      error: "#F74646",
+      lightBackground: "#ffffff30",
     },
     secondary: {
       main: "#292929",
@@ -31,7 +34,7 @@ const theme = createTheme({
     // },
   },
   typography: {
-    // fontSize: 16,
+    fontSize: 16,
     // h1: {
     //   fontSize: "2.5rem",
     // },
@@ -41,6 +44,11 @@ const theme = createTheme({
     // h3: {
     //   fontSize: "1.75rem",
     // },
+    h5: {
+      fontSize: "1.15rem",
+      color: "#292929",
+      fontWeight: 500,
+    },
   },
   // spacing: 8,
   components: {

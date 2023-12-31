@@ -20,11 +20,11 @@ const CommingSoon = () => {
         sx={{
           borderRadius: 0,
           [theme.breakpoints.up("xs")]: {
-            width: "80vw",
+            width: "90vw",
             height: "34vh",
           },
           [theme.breakpoints.up("sm")]: {
-            width: "60vw",
+            width: "62vw",
             height: "50vh",
           },
         }}
