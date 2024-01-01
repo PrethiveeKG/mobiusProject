@@ -27,13 +27,13 @@ const CompositionChart = () => {
     options: {
       chart: {
         type: "bar",
-        height: isMobile ? 240 : 340,
+        height: isMobile ? 240 : 300,
         stacked: true,
         stackType: "100%",
       },
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 600,
           options: {
             legend: {
               position: "bottom",
@@ -77,7 +77,7 @@ const CompositionChart = () => {
     fontSize: "1rem",
     fontWeight: 600,
     "& span": {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
       background: theme.palette.tickTie.success,
       paddingInline: theme.spacing(1),
       paddingBlock: theme.spacing(0.5),
@@ -96,7 +96,7 @@ const CompositionChart = () => {
         options={chartOptions.options}
         series={series}
         type="bar"
-        height={isMobile ? 240 : 340}
+        height={isMobile ? 240 : 300}
       />
     </Container>
   );

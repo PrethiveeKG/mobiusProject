@@ -19,7 +19,7 @@ const BurnRateChart = () => {
   const chartOptions = {
     options: {
       chart: {
-        height: isMobile ? 240 : 340,
+        height: isMobile ? 200 : 300,
         type: "line",
         zoom: {
           enabled: false,
@@ -88,10 +88,10 @@ const BurnRateChart = () => {
   }));
 
   const ChartTitle = styled(Typography)(({ theme }) => ({
-    fontSize: "1rem",
+    fontSize: "0.9rem",
     fontWeight: 600,
     "& span": {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
       background: theme.palette.tickTie.error,
       paddingInline: theme.spacing(1),
       paddingBlock: theme.spacing(0.5),
@@ -110,7 +110,7 @@ const BurnRateChart = () => {
         options={chartOptions.options}
         series={series}
         type="line"
-        height={isMobile ? 240 : 340}
+        height={isMobile ? 200 : 300}
       />
     </Container>
   );

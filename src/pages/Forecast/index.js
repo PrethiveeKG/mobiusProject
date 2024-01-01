@@ -2,6 +2,7 @@ import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ForecastDataGrid from "../../components/ForecastDataGrid";
 import { useTheme } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const Forecast = () => {
   const theme = useTheme();
@@ -17,6 +18,17 @@ const Forecast = () => {
     setDuration(value);
   };
 
+  const Container = styled(Box)(({ theme }) => ({
+    "& .MuiButtonBase-root": {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "0.65rem",
+      },
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "0.85rem",
+      },
+    },
+  }));
+
   const btngroupStyle = {
     [theme.breakpoints.up("xs")]: {
       marginInlineStart: 0,
@@ -29,7 +41,7 @@ const Forecast = () => {
   };
 
   return (
-    <Box>
+    <Container>
       <Grid container xs={12}>
         <Grid item xs={12}>
           <Typography variant="h5">
@@ -38,13 +50,13 @@ const Forecast = () => {
           </Typography>
         </Grid>
 
-        <Grid container xs={12} sx={{ marginBlock: theme.spacing(2) }}>
+        <Grid item xs={12} sx={{ marginBlock: theme.spacing(2) }}>
           <ButtonGroup size="small">
             <Button
               color={forecast === "income" ? "primary" : "secondary"}
               onClick={() => handleForecastChange("income")}
             >
-              Income 
+              Income
             </Button>
             <Button
               color={forecast === "balance" ? "primary" : "secondary"}
@@ -86,7 +98,7 @@ const Forecast = () => {
           <ForecastDataGrid />
         </Grid>
       </Grid>
-    </Box>
+    </Container>
   );
 };
 

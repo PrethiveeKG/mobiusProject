@@ -15,19 +15,16 @@ const theme = createTheme({
       error: "#F74646",
       lightBackground: "#ffffff30",
     },
+    // primary: {},
     secondary: {
       main: "#292929",
       contrastText: "#fff",
     },
 
-    // primary: {},
     // secondary: {
-    // main: "#292929",
-    // light: "#ffffff",
-    // dark: "#292929",
-    // },
-    // secondary: {
-    //   main: "#19857b",
+    // main: "#87654",
+    // light: "#00000",
+    // dark: "#09876",
     // },
     // error: {
     //   main: red.A400,

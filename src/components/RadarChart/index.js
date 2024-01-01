@@ -18,7 +18,7 @@ const RadarChart = () => {
   const chartOptions = {
     options: {
       chart: {
-        height: isMobile ? 240 : 340,
+        height: isMobile ? 200 : 300,
         type: "radar",
       },
       xaxis: {
@@ -38,7 +38,7 @@ const RadarChart = () => {
     fontSize: "1rem",
     fontWeight: 600,
     "& span": {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
       background: theme.palette.tickTie.success,
       paddingInline: theme.spacing(1),
       paddingBlock: theme.spacing(0.5),
@@ -57,7 +57,7 @@ const RadarChart = () => {
         options={chartOptions.options}
         series={series}
         type="radar"
-        height={isMobile ? 240 : 340}
+        height={isMobile ? 200 : 300}
       />
     </Container>
   );

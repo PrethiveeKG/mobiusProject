@@ -41,19 +41,39 @@ const MainLayout = ({ children }) => {
   const handleMenuClick = (menuName) => {
     setSelectedMenu(menuName);
     navigate(menuName);
-    isSmallDevice && handleDrawerToggle();
   };
 
+  // Styled Component
   const Main = styled("main")(({ theme }) => ({
     marginBlockStart: theme.spacing(8),
     flexGrow: 1,
-    [theme.breakpoints.up('xs')]: {
+    [theme.breakpoints.up("xs")]: {
       padding: theme.spacing(1),
-		},
-    [theme.breakpoints.up('sm')]: {
+    },
+    [theme.breakpoints.up("sm")]: {
       padding: theme.spacing(2),
-		},
+    },
+  }));
 
+  const CustomList = styled(List)(({ theme }) => ({
+    "& .MuiSvgIcon-root": {
+      color: theme.palette.tickTie.light,
+    },
+    "& .MuiListItemIcon-root": {
+      minWidth: theme.spacing(5),
+    },
+    "& .MuiListItemText-primary": {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "0.75rem",
+      },
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "0.85rem",
+      },
+    },
+    "& .Mui-selected": {
+      border: "0.5px solid #ffffff20",
+      borderRadius: theme.spacing(0.5),
+    },
   }));
 
   return (
@@ -75,7 +95,6 @@ const MainLayout = ({ children }) => {
         <Drawer
           variant={isSmallDevice ? "temporary" : "persistent"}
           anchor="left"
-          color="inherit"
           open={openDrawer}
           onClose={handleDrawerToggle}
           ModalProps={{ keepMounted: true }}
@@ -90,22 +109,7 @@ const MainLayout = ({ children }) => {
         >
           {/* App Logo */}
           <Logo />
-
-          <List
-            component="nav"
-            aria-label="side-menu-navigation-list"
-            sx={{
-              "& .MuiSvgIcon-root": {
-                color: theme.palette.tickTie.light,
-              },
-              "& .MuiListItemIcon-root": {
-                minWidth: theme.spacing(5),
-              },
-              "& .MuiListItemText-primary": {
-                fontSize: "0.9rem",
-              },
-            }}
-          >
+          <CustomList component="nav" aria-label="side-menu-navigation-list">
             {/* Fin Health */}
             <ListItemButton
               selected={selectedMenu === "finHealth"}
@@ -139,7 +143,6 @@ const MainLayout = ({ children }) => {
             <Collapse in={openFPA} timeout="auto">
               <List
                 component="nav"
-                aria-label="side-menu-navigation-list"
                 sx={{
                   "& .MuiListItemText-root": {
                     paddingInlineStart: 6,
@@ -195,7 +198,7 @@ const MainLayout = ({ children }) => {
                 </ListItemButton>
               </List>
             </Collapse>
-          </List>
+          </CustomList>
         </Drawer>
       </Box>
       <Main>{children}</Main>

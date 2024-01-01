@@ -10,12 +10,12 @@ const FinanceCard = ({ data }) => {
 
   const CardTitle = styled(Typography)(({ theme }) => ({
     textAlign: "center",
-    fontWeight: 600,
+    fontWeight: 500,
     [theme.breakpoints.up("xs")]: {
       fontSize: "0.9rem",
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: "1.1rem",
+      fontSize: "1rem",
     },
   }));
 
@@ -27,11 +27,11 @@ const FinanceCard = ({ data }) => {
         ? theme.palette.tickTie.darkText
         : theme.palette.tickTie.error,
     [theme.breakpoints.up("xs")]: {
-      fontSize: "1.2rem",
+      fontSize: "1.15rem",
       marginBlock: theme.spacing(0.5),
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: "2rem",
+      fontSize: "1.7rem",
       marginBlock: theme.spacing(0.75),
     },
     "& .MuiSvgIcon-root": {
@@ -42,10 +42,10 @@ const FinanceCard = ({ data }) => {
           ? theme.palette.tickTie.success
           : theme.palette.tickTie.error,
       [theme.breakpoints.up("xs")]: {
-        fontSize: "1.2rem",
+        fontSize: "1.15rem",
       },
       [theme.breakpoints.up("md")]: {
-        fontSize: "2rem",
+        fontSize: "1.7rem",
       },
     },
   }));
@@ -56,7 +56,7 @@ const FinanceCard = ({ data }) => {
       fontSize: "0.7rem",
     },
     [theme.breakpoints.up("md")]: {
-        fontSize: "0.9rem",
+      fontSize: "0.8rem",
     },
   }));
 
@@ -68,7 +68,7 @@ const FinanceCard = ({ data }) => {
       <CardTitle>{data?.cardTitle}</CardTitle>
       <CardContent growth={data?.growth}>
         {"$"}
-        {data?.amount}{" "}
+        {data?.amount}
         {data?.growth === "up" ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
       </CardContent>
       <CardFooter> {`Total $4,434,67 (+21%) `}</CardFooter>

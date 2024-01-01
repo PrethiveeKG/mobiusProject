@@ -27,7 +27,7 @@ const CashBalanceChart = () => {
     options: {
       chart: {
         type: "bar",
-        height: isMobile ? 240 : 340,
+        height: isMobile ? 200 : 300,
       },
       plotOptions: {
         bar: {
@@ -83,7 +83,7 @@ const CashBalanceChart = () => {
     fontSize: "1rem",
     fontWeight: 600,
     "& span": {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
       background: theme.palette.tickTie.success,
       paddingInline: theme.spacing(1),
       paddingBlock: theme.spacing(0.5),
@@ -102,7 +102,7 @@ const CashBalanceChart = () => {
         options={chartOptions.options}
         series={series}
         type="bar"
-        height={isMobile ? 240 : 340}
+        height={isMobile ? 200 : 300}
       />
     </Container>
   );

@@ -1,14 +1,13 @@
+import React, { useState } from "react";
 import {
   AppBar,
   Button,
   Grid,
   IconButton,
-  InputAdornment,
   TextField,
   Toolbar,
   useMediaQuery,
 } from "@mui/material";
-import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpen from "@mui/icons-material/MenuOpen";
 import { useTheme } from "@emotion/react";
@@ -17,18 +16,41 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import CodeIcon from "@mui/icons-material/Code";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import styled from "@emotion/styled";
+import MobileSearch from "./MobileSearch";
 
-const Header = ({
-  drawerWidth,
-  openDrawer,
-  isSmallDevice,
-  handleDrawerToggle,
-}) => {
+const Header = (props) => {
   const theme = useTheme();
+  const { drawerWidth, openDrawer, isSmallDevice, handleDrawerToggle } = props;
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
   const [searchValue, setSearchValue] = useState("");
+  const [openMobileSearch, setOpenMobileSearch] = useState(false);
+
+  const CustomIconButton = styled(IconButton)(({ theme }) => ({
+    "& .MuiSvgIcon-root": {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "1.25rem",
+      },
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.6rem",
+      },
+    },
+  }));
+  const navbarStyled = {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: 2,
+    "& .MuiButton-outlined": {
+      fontSize: "0.8rem",
+    },
+  };
+
+  const handleMobSearchClose = () => {
+    setOpenMobileSearch(false);
+  };
 
   return (
     <AppBar
@@ -40,26 +62,15 @@ const Header = ({
       elevation={1}
     >
       <Toolbar>
-        <IconButton onClick={handleDrawerToggle}>
+        <CustomIconButton onClick={handleDrawerToggle}>
           {openDrawer ? <MenuOpen /> : <MenuIcon />}
-        </IconButton>
-        <Grid
-          container
-          xs={12}
-          spacing={1}
-          sx={{
-            "& .MuiSvgIcon-root": {
-              [theme.breakpoints.up("xs")]: {
-                fontSize: 20,
-              },
-            },
-          }}
-        >
+        </CustomIconButton>
+        <Grid container xs={12} spacing={1}>
           <Grid item xs={3} sm={1} md={5}>
             {isTablet ? (
-              <IconButton onClick={() => {}}>
+              <CustomIconButton onClick={() => setOpenMobileSearch(true)}>
                 <SearchIcon />
-              </IconButton>
+              </CustomIconButton>
             ) : (
               <TextField
                 id="searchbar"
@@ -72,34 +83,21 @@ const Header = ({
                 onChange={(e) => {
                   setSearchValue(e.target.value);
                 }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
               />
             )}
+            <MobileSearch
+              openMobileSearch={openMobileSearch && isTablet}
+              handleMobSearchClose={handleMobSearchClose}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
           </Grid>
 
-          <Grid
-            item
-            xs={9}
-            sm={11}
-            md={7}
-            sx={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              gap: 2,
-            }}
-          >
+          <Grid item xs={9} sm={11} md={7} sx={navbarStyled}>
             {isMobile ? (
-              <IconButton onClick={() => {}}>
+              <CustomIconButton onClick={() => {}}>
                 <HelpOutlineIcon />
-              </IconButton>
+              </CustomIconButton>
             ) : (
               <Button
                 variant="outlined"
@@ -112,9 +110,9 @@ const Header = ({
             )}
 
             {isMobile ? (
-              <IconButton onClick={() => {}}>
+              <CustomIconButton onClick={() => {}}>
                 <CodeIcon />
-              </IconButton>
+              </CustomIconButton>
             ) : (
               <Button
                 variant="outlined"
@@ -127,9 +125,9 @@ const Header = ({
             )}
 
             {isMobile ? (
-              <IconButton size="small" onClick={() => {}}>
+              <CustomIconButton size="small" onClick={() => {}}>
                 <StarBorderIcon />
-              </IconButton>
+              </CustomIconButton>
             ) : (
               <Button
                 variant="outlined"
@@ -142,9 +140,9 @@ const Header = ({
             )}
 
             {isMobile ? (
-              <IconButton color="primary" onClick={() => {}}>
+              <CustomIconButton color="primary" onClick={() => {}}>
                 <CloudUploadIcon />
-              </IconButton>
+              </CustomIconButton>
             ) : (
               <Button variant="contained" size="small">
                 Upload

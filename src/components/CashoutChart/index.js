@@ -22,7 +22,7 @@ const CashoutChart = () => {
   const chartOptions = {
     options: {
       chart: {
-        height: isMobile ? 240 : 340,
+        height: isMobile ? 200 : 300,
         type: "area",
       },
       dataLabels: {
@@ -54,6 +54,7 @@ const CashoutChart = () => {
   const Container = styled(Box)(({ theme }) => ({
     padding: theme.spacing(2),
     boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+    border: "1px solid white",
     borderRadius: theme.spacing(1),
     margin: theme.spacing(1),
   }));
@@ -62,7 +63,7 @@ const CashoutChart = () => {
     fontSize: "1rem",
     fontWeight: 600,
     "& span": {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
       background: theme.palette.tickTie.success,
       paddingInline: theme.spacing(1),
       paddingBlock: theme.spacing(0.5),
@@ -81,7 +82,7 @@ const CashoutChart = () => {
         options={chartOptions.options}
         series={series}
         type="area"
-        height={isMobile ? 240 : 340}
+        height={isMobile ? 200 : 300}
       />
     </Container>
   );

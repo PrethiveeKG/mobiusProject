@@ -8,8 +8,37 @@ import {
   GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
 import { Box, Typography } from "@mui/material";
+import styled from "@emotion/styled";
 
 const ForecastDataGrid = () => {
+  const TableTitle = styled(Typography)(({ theme }) => ({
+    width: "100%",
+    fontWeight: 600,
+    fontSize: "0.9rem",
+    paddingBlockStart: theme.spacing(1),
+  }));
+
+  const Container = styled(Box)(({ theme }) => ({
+    height: "500px",
+    width: "100%",
+    "& .MuiDataGrid-columnHeaderTitleContainer": {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "0.85rem",
+      },
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "0.9rem",
+      },
+    },
+    "& .MuiDataGrid-cellContent": {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "0.75rem",
+      },
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "0.85rem",
+      },
+    },
+  }));
+
   const columns = [
     {
       field: "particulars",
@@ -20,44 +49,38 @@ const ForecastDataGrid = () => {
       field: "jan",
       headerName: "Jan 23",
       type: "number",
-      width: 120,
+      width: 110,
     },
     {
       field: "feb",
       headerName: "Feb 23",
       type: "number",
-      width: 120,
+      width: 110,
     },
     {
       field: "mar",
       headerName: "Mar 23",
       type: "number",
-      width: 120,
+      width: 110,
     },
     {
       field: "apr",
       headerName: "Apr 23",
       type: "number",
-      width: 120,
+      width: 110,
     },
     {
       field: "may",
       headerName: "May 23",
       type: "number",
-      width: 120,
+      width: 110,
     },
     {
       field: "jun",
       headerName: "Jun 23",
       type: "number",
-      width: 120,
+      width: 110,
     },
-    // {
-    //   field: "jul",
-    //   headerName: "Jul 23",
-    //   type: "number",
-    //   width: 120,
-    // },
   ];
 
   //   we will get data from API in real scenarios
@@ -71,7 +94,6 @@ const ForecastDataGrid = () => {
       apr: 311,
       may: 793,
       jun: 1966,
-      jul: 3654,
     },
     {
       id: 2,
@@ -82,7 +104,6 @@ const ForecastDataGrid = () => {
       apr: 3259,
       may: 1222,
       jun: 607,
-      jul: 3215,
     },
     {
       id: 3,
@@ -93,7 +114,6 @@ const ForecastDataGrid = () => {
       apr: 1834,
       may: 4600,
       jun: 370,
-      jul: 3077,
     },
     {
       id: 4,
@@ -104,7 +124,6 @@ const ForecastDataGrid = () => {
       apr: 757,
       may: 4988,
       jun: 2911,
-      jul: 4162,
     },
     {
       id: 5,
@@ -115,7 +134,6 @@ const ForecastDataGrid = () => {
       apr: 3315,
       may: 1992,
       jun: 2862,
-      jul: 4514,
     },
     {
       id: 6,
@@ -126,7 +144,6 @@ const ForecastDataGrid = () => {
       apr: 1770,
       may: 2766,
       jun: 948,
-      jul: 4009,
     },
     {
       id: 7,
@@ -137,7 +154,6 @@ const ForecastDataGrid = () => {
       apr: 4437,
       may: 4148,
       jun: 3249,
-      jul: 1984,
     },
     {
       id: 8,
@@ -148,7 +164,6 @@ const ForecastDataGrid = () => {
       apr: 1155,
       may: 3905,
       jun: 2171,
-      jul: 2968,
     },
     {
       id: 9,
@@ -159,7 +174,6 @@ const ForecastDataGrid = () => {
       apr: 904,
       may: 2491,
       jun: 4419,
-      jul: 2844,
     },
     {
       id: 10,
@@ -170,7 +184,6 @@ const ForecastDataGrid = () => {
       apr: 4304,
       may: 3315,
       jun: 2496,
-      jul: 1270,
     },
     {
       id: 11,
@@ -181,7 +194,6 @@ const ForecastDataGrid = () => {
       apr: 3052,
       may: 536,
       jun: 2917,
-      jul: 2567,
     },
     {
       id: 12,
@@ -192,7 +204,6 @@ const ForecastDataGrid = () => {
       apr: 1462,
       may: 475,
       jun: 3067,
-      jul: 1023,
     },
     {
       id: 13,
@@ -203,7 +214,6 @@ const ForecastDataGrid = () => {
       apr: 4145,
       may: 4079,
       jun: 1527,
-      jul: 858,
     },
     {
       id: 14,
@@ -214,7 +224,6 @@ const ForecastDataGrid = () => {
       apr: 1973,
       may: 882,
       jun: 3795,
-      jul: 342,
     },
     {
       id: 15,
@@ -225,7 +234,6 @@ const ForecastDataGrid = () => {
       apr: 3753,
       may: 1820,
       jun: 1691,
-      jul: 4512,
     },
     {
       id: 16,
@@ -236,17 +244,13 @@ const ForecastDataGrid = () => {
       apr: 2597,
       may: 738,
       jun: 1916,
-      jul: 4221,
     },
   ];
 
   function CustomToolbar() {
     return (
       <GridToolbarContainer>
-        <Typography variant="h6" sx={{ width: "100%" }}>
-          Data View
-        </Typography>
-
+        <TableTitle>Data View</TableTitle>
         <GridToolbarColumnsButton />
         <GridToolbarFilterButton />
         <GridToolbarDensitySelector />
@@ -256,12 +260,12 @@ const ForecastDataGrid = () => {
   }
 
   return (
-    <Box sx={{ height: "450px", width: "100%" }}>
+    <Container>
       <DataGrid
         rows={rows}
         columns={columns}
         initialState={{
-          pagination: { paginationModel: { pageSize: 10 } },
+          pagination: { paginationModel: { pageSize: 5 } },
         }}
         pageSizeOptions={[5, 10, 25]}
         disableRowSelectionOnClick
@@ -269,7 +273,7 @@ const ForecastDataGrid = () => {
           toolbar: CustomToolbar,
         }}
       />
-    </Box>
+    </Container>
   );
 };
 

@@ -15,9 +15,7 @@ import RadarChart from "../../components/RadarChart";
 import CashoutChart from "../../components/CashoutChart";
 import { useTheme } from "@emotion/react";
 
-
 const FinHealth = () => {
-
   const theme = useTheme();
 
   const [year, setYear] = useState("2023");
@@ -31,10 +29,16 @@ const FinHealth = () => {
     { label: "As of June 2021", value: "2021" },
   ];
 
+  const selectedFieldStyles = {
+    marginBlock: theme.spacing(1.5),
+    display: "flex",
+    justifyContent: "flex-end",
+  };
+
   const cardData = [
     {
       cardTitle: "Cash balance",
-      amount: "3,712,608",
+      amount: "3,712,601",
       growth: "up",
     },
     {
@@ -62,18 +66,9 @@ const FinHealth = () => {
           {/* This will changed as breadcrumbs if we get all pages*/}
           <Typography variant="h5">Fin Health / Cash</Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sx={{
-            marginBlock: theme.spacing(1.5),
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
+        <Grid item xs={12} sx={selectedFieldStyles}>
           <FormControl fullWidth sx={{ width: theme.spacing(26) }}>
             <Select
-              labelId="select-year"
               id="select-year"
               value={year}
               onChange={handleYearChange}
