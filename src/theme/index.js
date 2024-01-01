@@ -45,7 +45,7 @@ const theme = createTheme({
     //   fontSize: "1.75rem",
     // },
     h5: {
-      fontSize: "1.15rem",
+      fontSize: "1rem",
       color: "#292929",
       fontWeight: 500,
     },

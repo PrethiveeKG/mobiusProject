@@ -29,7 +29,7 @@ const MainLayout = ({ children }) => {
   const [openFPA, setOpenFPA] = useState(true);
   const [selectedMenu, setSelectedMenu] = useState("finHealth");
 
-  const drawerWidth = openDrawer ? 260 : 0;
+  const drawerWidth = openDrawer ? 240 : 0;
   const handleDrawerToggle = () => {
     setOpenDrawer((prev) => !prev);
   };

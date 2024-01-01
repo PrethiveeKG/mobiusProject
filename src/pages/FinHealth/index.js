@@ -1,23 +1,25 @@
+import React, { useState } from "react";
 import {
   Box,
-  Container,
   FormControl,
   Grid,
-  InputLabel,
   MenuItem,
   Select,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import theme from "../../theme";
 import FinanceCard from "../../components/FinanceCard";
 import CashBalanceChart from "../../components/CashBalanceChart";
 import BurnRateChart from "../../components/BurnRateChart";
 import CompositionChart from "../../components/CompositionChart";
 import RadarChart from "../../components/RadarChart";
 import CashoutChart from "../../components/CashoutChart";
+import { useTheme } from "@emotion/react";
+
 
 const FinHealth = () => {
+
+  const theme = useTheme();
+
   const [year, setYear] = useState("2023");
   const handleYearChange = (event) => {
     setYear(event.target.value);
@@ -57,6 +59,7 @@ const FinHealth = () => {
       {/* Header Section */}
       <Grid container xs={12}>
         <Grid item xs={12}>
+          {/* This will changed as breadcrumbs if we get all pages*/}
           <Typography variant="h5">Fin Health / Cash</Typography>
         </Grid>
         <Grid
