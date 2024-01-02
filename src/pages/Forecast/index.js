@@ -51,7 +51,7 @@ const Forecast = () => {
         </Grid>
 
         <Grid item xs={12} sx={{ marginBlock: theme.spacing(2) }}>
-          <ButtonGroup size="small">
+          <ButtonGroup size="small" sx={{ mr: 1 }}>
             <Button
               color={forecast === "income" ? "primary" : "secondary"}
               onClick={() => handleForecastChange("income")}

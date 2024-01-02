@@ -1,53 +1,43 @@
-// import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
-
+import { red, grey, green } from "@mui/material/colors";
 //   custom theme for this appliacation
 const theme = createTheme({
   palette: {
     tickTie: {
-      main: "#292929",
-      light: "#ffffff",
-      dark: "#000000",
-      lightText: "#ffffff",
-      darkText: "#000000",
-      mainText: "#292929",
-      success: "#00CB34",
-      error: "#F74646",
+      main: grey[800],
+      light: "#fff",
+      dark: grey[900],
+      lightText: "#fff",
+      darkText: grey[900],
+      mainText: grey[900],
+      success: green[500],
+      error: red[500],
       lightBackground: "#ffffff30",
     },
     // primary: {},
     secondary: {
-      main: "#292929",
+      main: grey[900],
       contrastText: "#fff",
     },
-
-    // secondary: {
-    // main: "#87654",
-    // light: "#00000",
-    // dark: "#09876",
-    // },
-    // error: {
-    //   main: red.A400,
-    // },
   },
   typography: {
     fontSize: 16,
-    // h1: {
-    //   fontSize: "2.5rem",
-    // },
-    // h2: {
-    //   fontSize: "2rem",
-    // },
-    // h3: {
-    //   fontSize: "1.75rem",
-    // },
+    h1: {
+      color: grey[800],
+    },
+    h2: {
+      color: grey[800],
+    },
+    h3: {
+      color: grey[800],
+    },
     h5: {
       fontSize: "1rem",
-      color: "#292929",
+      color: grey[800],
       fontWeight: 500,
     },
   },
-  // spacing: 8,
+  spacing: 8,
   components: {
     // Name of the component
     MuiButton: {
@@ -55,6 +45,11 @@ const theme = createTheme({
         root: {
           textTransform: "none",
         },
+      },
+    },
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: false,
       },
     },
   },
