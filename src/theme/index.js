@@ -31,9 +31,19 @@ const theme = createTheme({
     h3: {
       color: grey[800],
     },
+    h4: {
+      fontSize: "1.5rem",
+      color: grey[800],
+      fontWeight: 500,
+    },
     h5: {
       fontSize: "1rem",
       color: grey[800],
+      fontWeight: 500,
+    },
+    h6: {
+      fontSize: "1.15rem",
+      color: grey[600],
       fontWeight: 500,
     },
   },
@@ -50,6 +60,20 @@ const theme = createTheme({
     MuiButtonBase: {
       defaultProps: {
         disableRipple: false,
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {},
+        label: {
+          padding: "initial",
+        },
+      },
+    },
+    MuiAutocomplete: {
+      defaultProps: {
+        disableClearable: false,
+        size: "small",
       },
     },
   },
